@@ -36,18 +36,18 @@ public class CalcTip extends Activity {
         tiptextView = (TextView) findViewById(R.id.textView13);
         totaltextView = (TextView) findViewById(R.id.textView11);
 
-        Intent intent = getIntent();
-        posttaxbillAmt = intent.getDoubleExtra("doubleBillAmt",0.0);
+        Bundle b = getIntent().getExtras();
+        posttaxbillAmt = b.getDouble("doubleBillAmt");
         pretaxbillAmt = posttaxbillAmt/(1+TAXRATE);
         taxAmt = pretaxbillAmt*TAXRATE;
         tipAmt = pretaxbillAmt*DEFAULT_TIP_PERCENTAGE;
         totalAmt = pretaxbillAmt+taxAmt+tipAmt;
         // Display everything
-        billamounttextView.setText(Double.toString(posttaxbillAmt));
-        pretaxtextView.setText(Double.toString(pretaxbillAmt));
-        taxtextView.setText(Double.toString(taxAmt));
-        tiptextView.setText(Double.toString(tipAmt));
-        totaltextView.setText(Double.toString(totalAmt));
+        billamounttextView.setText(String.format("%.2f", posttaxbillAmt));
+        pretaxtextView.setText(String.format("%.2f", pretaxbillAmt));
+        taxtextView.setText(String.format("%.2f", taxAmt));
+        tiptextView.setText(String.format("%.2f", tipAmt));
+        totaltextView.setText(String.format("%.2f", totalAmt));
     }
 
 
@@ -63,7 +63,7 @@ public class CalcTip extends Activity {
         try {
             newTipPercentage = Double.parseDouble(newTipPercentageText.getText().toString());
             newTipPercentage = ((double) java.lang.Math.round(newTipPercentage*100))/100;
-            String strnewTipPercentage = String.format("%.2f", newTipPercentage);
+            String strnewTipPercentage = String.format("%d", (int) newTipPercentage);
             newTipPercentageText.setText(strnewTipPercentage);
             if (newTipPercentage < 0) {
                 throw new InvalidCashAmountException();
@@ -116,7 +116,7 @@ public class CalcTip extends Activity {
         }
         if (validTipPercentage) {
             pretax = Double.parseDouble(pretaxtextView.getText().toString());
-            tip = pretax * newTipPercentage;
+            tip = pretax * newTipPercentage/100;
             tax = pretax * TAXRATE;
             total = pretax + tip + tax;
             String strTax = String.format("%.2f", tax);

@@ -229,14 +229,16 @@ public class CustomSearchActivity extends Activity {
                         JSONObject nativeData = firstObject.getJSONObject("NativeData");
                         JSONObject tipCalcInputData = nativeData.getJSONObject("TipCalculatorInputData");
                         JSONObject billAmountJSON = tipCalcInputData.getJSONObject("BillAmount");
-                        int billAmount = billAmountJSON.getInt("Amount");
-                        Integer i = billAmount;
+                        double billAmount = billAmountJSON.getDouble("Amount");
+                        Double i = billAmount;
                         //**** TODO: pass "billAmount:" to the CalcTip class ***
                         message = "Response\n\n" + i.toString();
                         textView.setText("Bad JSON\n\n$" + i.toString());
                         Intent intent =
                                 new Intent(CustomSearchActivity.this, CalcTip.class);
-                        intent.putExtra("doubleBillAmt", billAmount);
+                        Bundle bun = new Bundle();
+                        bun.putDouble("doubleBillAmt", billAmount);
+                        intent.putExtras(bun);
                         startActivity(intent);
                     }
                     catch (final JSONException ex) {

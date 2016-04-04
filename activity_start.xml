@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Recommended Integration"
+            android:id="@+id/title1"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="This sample demonstrates the easiest way to get up and running with the Houndify platform on Android.  It includes everything you need including a full UI that follows our guidelines and best practices.  It also has examples of: starting the Search Activity, using the Phrase Spotter Lib to voice trigger a search, running a Client Match Search, and using the Text-to-Speech API."
+            android:id="@+id/textView1"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/btn_hound_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Search using HoundifyVoiceSearchActivity"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Custom Integration"
+            android:id="@+id/title2"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="For advanced users and special cases, this sample demonstrates how to use a custom UI.  Please refer to our documentation for UI guidelines and best practices."
+            android:id="@+id/textView2"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/btn_basic_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Search using Houndify API directly"/>
+
+
+
+    </LinearLayout>
+
+</ScrollView>

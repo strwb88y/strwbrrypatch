@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top|left"
-            android:text="***EMPTY***"
+            android:text="EXAMPLE: What is the tip on a fifteen dollar bill?"
             android:textIsSelectable="true"/>
 
     </ScrollView>

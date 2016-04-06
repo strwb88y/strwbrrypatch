@@ -15,15 +15,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Recommended Integration"
+            android:text="Manually Enter Bill Amount"
             android:id="@+id/title1"
             android:layout_gravity="center_horizontal"
             android:gravity="center" />
+
+        <EditText
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:layout_gravity="center_horizontal"
+            android:text="15.00" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="This sample demonstrates the easiest way to get up and running with the Houndify platform on Android.  It includes everything you need including a full UI that follows our guidelines and best practices.  It also has examples of: starting the Search Activity, using the Phrase Spotter Lib to voice trigger a search, running a Client Match Search, and using the Text-to-Speech API."
+            android:text="Enter the amount of your bill in the field below and I&apos;ll calculate your tip and total bill automatically."
             android:id="@+id/textView1"
             android:layout_gravity="center_horizontal" />
 
@@ -32,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Search using HoundifyVoiceSearchActivity"/>
+            android:text="Calculate my tip and final bill!"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -42,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Custom Integration"
+            android:text="Verbally Enter Bill Amount"
             android:id="@+id/title2"
             android:layout_gravity="center_horizontal"
             android:gravity="center" />
@@ -50,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="For advanced users and special cases, this sample demonstrates how to use a custom UI.  Please refer to our documentation for UI guidelines and best practices."
+            android:text="Click on the button below to use Houndify to specify your bill amount."
             android:id="@+id/textView2"
             android:layout_gravity="center_horizontal" />
 
@@ -59,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Search using Houndify API directly"/>
+            android:text="Let me say it!"/>
 
 
 

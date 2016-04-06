@@ -231,7 +231,6 @@ public class CustomSearchActivity extends Activity {
                         JSONObject billAmountJSON = tipCalcInputData.getJSONObject("BillAmount");
                         double billAmount = billAmountJSON.getDouble("Amount");
                         Double i = billAmount;
-                        //**** TODO: pass "billAmount:" to the CalcTip class ***
                         message = "Response\n\n" + i.toString();
                         textView.setText("Bad JSON\n\n$" + i.toString());
                         Intent intent =

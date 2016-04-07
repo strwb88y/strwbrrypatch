@@ -224,21 +224,34 @@ public class CustomSearchActivity extends Activity {
                 //**public void run() {
                     String message;
                     try {
-                        JSONArray allResultsArray = new JSONObject(info.getContentBody()).getJSONArray("AllResults");
+                        JSONObject rootObject = new JSONObject(info.getContentBody());
+                        JSONArray allResultsArray = rootObject.getJSONArray("AllResults");
                         JSONObject firstObject = allResultsArray.getJSONObject(0);
+                        String commandKind = firstObject.getString("CommandKind");
+                        if (commandKind.equals("NoResultCommand")) {
+                            JSONObject disambiguation = rootObject.getJSONObject("Disambiguation");
+                            JSONArray choiceData = disambiguation.getJSONArray("ChoiceData");
+                            JSONObject firstChoiceData = choiceData.getJSONObject(0);
+                            String transcription = firstChoiceData.getString("Transcription");
+                            throw new NoResultsException(transcription);
+                        }
+
                         JSONObject nativeData = firstObject.getJSONObject("NativeData");
                         JSONObject tipCalcInputData = nativeData.getJSONObject("TipCalculatorInputData");
                         JSONObject billAmountJSON = tipCalcInputData.getJSONObject("BillAmount");
                         double billAmount = billAmountJSON.getDouble("Amount");
                         Double i = billAmount;
                         message = "Response\n\n" + i.toString();
-                        textView.setText("Bad JSON\n\n$" + i.toString());
                         Intent intent =
                                 new Intent(CustomSearchActivity.this, CalcTip.class);
                         Bundle bun = new Bundle();
                         bun.putDouble("doubleBillAmt", billAmount);
                         intent.putExtras(bun);
                         startActivity(intent);
+                    }
+                    catch (final NoResultsException ex){
+                        message = "I didn't understand what you said: " + ex.getTranscription();
+                        textView.setText(message);
                     }
                     catch (final JSONException ex) {
                         textView.setText("Bad JSON\n\n" + response);
